@@ -1,14 +1,18 @@
 {
   "compilerOptions": {
     "target": "es2016",
-    "module": "CommonJS",
-    "typeRoots": ["src/@types", "node_modules/@types"],
+    "module": "commonjs",
+    "typeRoots": ["node_modules/@types"],
+    "outDir": "./dist",
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "strict": true,
     "exactOptionalPropertyTypes": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "strictPropertyInitialization": false
   },
-  "include": ["src/"],
+  "include": ["src"],
   "exclude": ["node_modules"]
 }

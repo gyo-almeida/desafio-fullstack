@@ -4,7 +4,7 @@ export const userReqSchema = z.object({
   email: z.string().email(),
   name: z.string().max(45),
   password: z.string().min(4).max(20),
-  cellPhone: z.number(),
+  cellPhone: z.number().or(z.string()),
 });
 
 export const userRespSchema = userReqSchema

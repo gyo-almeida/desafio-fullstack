@@ -1,8 +1,9 @@
 import { Request, Response } from "express";
 import { iUserReq } from "../interfaces/users";
 import { createUser } from "../services/users/createUser";
+import { getUser } from "../services/users/getUser";
 
-export async function CreateUser(
+export async function CreateUserController(
   req: Request,
   resp: Response
 ): Promise<Response> {
@@ -13,28 +14,30 @@ export async function CreateUser(
   return resp.status(201).json(user);
 }
 
-export async function getUsers(
+export async function getUsersController(
+  req: Request,
+  resp: Response
+): Promise<Response> {
+  const users = await getUser();
+
+  return resp.json(users);
+}
+
+export async function getUserByIdController(
   req: Request,
   resp: Response
 ): Promise<Response> {
   return resp.json();
 }
 
-export async function getUserById(
+export async function updateUserController(
   req: Request,
   resp: Response
 ): Promise<Response> {
   return resp.json();
 }
 
-export async function updateUser(
-  req: Request,
-  resp: Response
-): Promise<Response> {
-  return resp.json();
-}
-
-export async function deleteUser(
+export async function deleteUserController(
   req: Request,
   resp: Response
 ): Promise<Response> {

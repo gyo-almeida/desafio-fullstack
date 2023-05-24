@@ -1,20 +1,33 @@
 import { Repository } from "typeorm";
 import { AppDataSource } from "../../data-source";
 import { User } from "../../entities";
-import {
-  iMultipleUsers,
-  iUserReq,
-  iUserResp,
-  iUserUpdate,
-} from "../../interfaces/users";
-import { multipleUsers, userRespSchema } from "../../schemas/users";
+import { iUserResp, iUserUpdate } from "../../interfaces/users";
+import { userRespSchema } from "../../schemas/users";
+import { AppError } from "../../errors";
 
-// export async function updateUser(userData: iUserUpdate): Promise<iUserResp> {
-//   const userRepository: Repository<User> = AppDataSource.getRepository(User);
+export async function updateUser(
+  id: number,
+  userData: iUserUpdate,
+  tokenId: number
+): Promise<iUserResp> {
+  const userRepository: Repository<User> = AppDataSource.getRepository(User);
 
-//   const user: Array<User> = await userRepository.find();
+  const user = await userRepository.findOneBy({
+    id: id,
+  });
 
-//   const userList = multipleUsers.parse(user);
+  if (id !== tokenId && tokenId !== user?.id) {
+    throw new AppError("Insufficient permission", 403);
+  }
 
-//   return
-// }
+  const newUser = userRepository.create({
+    ...user,
+    ...userData,
+  });
+
+  await userRepository.save(newUser);
+
+  const userUpdate = userRespSchema.parse(newUser);
+
+  return userUpdate;
+}

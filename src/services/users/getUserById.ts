@@ -1,9 +1,14 @@
 import { Repository } from "typeorm";
 import { AppDataSource } from "../../data-source";
 import { User } from "../../entities";
+import { iUserResp } from "../../interfaces/users";
+import { userRespSchema } from "../../schemas/users";
 import { AppError } from "../../errors";
 
-export async function deleteUser(id: number, tokenId: number): Promise<void> {
+export async function getUserById(
+  id: number,
+  tokenId: number
+): Promise<iUserResp> {
   const userRepository: Repository<User> = AppDataSource.getRepository(User);
 
   const user = await userRepository.findOneBy({
@@ -14,5 +19,7 @@ export async function deleteUser(id: number, tokenId: number): Promise<void> {
     throw new AppError("Insufficient permission", 403);
   }
 
-  await userRepository.remove(user!);
+  const userById = userRespSchema.parse(user);
+
+  return userById;
 }

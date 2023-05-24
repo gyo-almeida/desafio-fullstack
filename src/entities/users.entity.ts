@@ -25,7 +25,7 @@ export class User {
   password: string;
 
   @Column({ type: "bigint" })
-  cellPhone: number;
+  cellPhone: number | string;
 
   @CreateDateColumn({ type: "date" })
   createdAt: string;

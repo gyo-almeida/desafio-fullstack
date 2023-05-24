@@ -21,6 +21,6 @@ export const updateUserSchema = z
     name: z.string().max(45).optional(),
     email: z.string().email().optional(),
     password: z.string().min(4).max(20).optional(),
-    cellPhone: z.number().optional(),
+    cellPhone: z.number().or(z.string()).optional(),
   })
   .omit({ password: true });

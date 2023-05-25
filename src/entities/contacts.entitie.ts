@@ -18,12 +18,12 @@ export class Contact {
   @Column({ length: 45, unique: true })
   email: string;
 
-  @Column()
-  cellPhone: number;
+  @Column({ type: "bigint" })
+  cellPhone: number | string;
 
   @CreateDateColumn({ type: "date" })
   createdAt: string;
 
-  @ManyToOne(() => User)
+  @ManyToOne(() => User, (user) => user.contacts)
   user: User;
 }

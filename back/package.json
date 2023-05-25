@@ -1,0 +1,36 @@
+{
+  "name": "desafio-fullstack-back-end",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:gyo-almeida/desafio-fullstack-back-end.git",
+  "author": "Gyovanna Almeida <gyovanna_almeida@hotmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/bcryptjs": "^2.4.2",
+    "@types/cors": "^2.8.13",
+    "@types/express": "^4.17.17",
+    "@types/jsonwebtoken": "^9.0.2",
+    "@types/pg": "^8.10.1",
+    "@types/pg-format": "^1.0.2",
+    "express": "^4.18.2",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.0.4"
+  },
+  "scripts": {
+    "dev": "ts-node-dev --cls --rs --ignore-watch node_modules src/server.ts",
+    "typeorm": "typeorm-ts-node-commonjs"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express-async-errors": "^3.1.1",
+    "jsonwebtoken": "^9.0.0",
+    "pg": "^8.11.0",
+    "pg-format": "^1.0.4",
+    "reflect-metadata": "^0.1.13",
+    "ts-node": "^10.9.1",
+    "typeorm": "^0.3.11",
+    "zod": "^3.21.4"
+  }
+}

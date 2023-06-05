@@ -31,14 +31,8 @@ contactRoutes.get(
 );
 contactRoutes.patch(
   "/:id",
-  validateUser,
-  validateData(updatecontactSchema),
   validateToken,
+  validateData(updatecontactSchema),
   updateContactController
 );
-contactRoutes.delete(
-  "/:id",
-  validateUser,
-  validateToken,
-  deleteContactController
-);
+contactRoutes.delete("/:id", validateToken, deleteContactController);

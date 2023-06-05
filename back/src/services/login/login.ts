@@ -6,7 +6,7 @@ import { AppError } from "../../errors";
 import { compare } from "bcryptjs";
 import jwt from "jsonwebtoken";
 
-export async function createLogin(loginData: iLogin): Promise<string> {
+export async function createLogin(loginData: iLogin): Promise<any> {
   const loginRepository: Repository<User> = AppDataSource.getRepository(User);
 
   const user: User | null = await loginRepository.findOneBy({
@@ -35,5 +35,5 @@ export async function createLogin(loginData: iLogin): Promise<string> {
     }
   );
 
-  return token;
+  return { token, user };
 }

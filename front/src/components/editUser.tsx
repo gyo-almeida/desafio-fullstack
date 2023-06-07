@@ -15,9 +15,6 @@ export function EditUserModal({ remove }) {
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     const userId = JSON.parse(user!);
 
-    console.log(userId);
-    console.log(data);
-
     try {
       await api.patch(`users/${userId.id}`, data);
 

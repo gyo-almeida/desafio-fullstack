@@ -11,11 +11,26 @@ export const validateEmailContact = async (
 ) => {
   const email = req.body.email;
 
+  const userRepo: Repository<User> = AppDataSource.getRepository(User);
+
+  const user = await userRepo.findOneBy({
+    id: req.user.id,
+  });
+
   const contactRepository: Repository<Contact> =
     AppDataSource.getRepository(Contact);
 
-  const findEmail = await contactRepository.findBy({
-    email: email,
+  if (!user) {
+    throw new AppError("User not found", 404);
+  }
+
+  const findEmail = await contactRepository.find({
+    where: {
+      email: email,
+      user: {
+        id: user?.id,
+      },
+    },
   });
 
   if (findEmail.length > 0) {

@@ -15,7 +15,7 @@ export class Contact {
   @Column({ length: 45 })
   name: string;
 
-  @Column({ length: 45, unique: true })
+  @Column({ length: 45 })
   email: string;
 
   @Column({ type: "bigint" })

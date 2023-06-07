@@ -15,7 +15,7 @@ import { motion } from "framer-motion";
 
 Modal.setAppElement("#root");
 
-interface Contact {
+export interface Contact {
   id: string;
   name: string;
   cellPhone: string;
@@ -30,6 +30,7 @@ export function Dashboard() {
   const [createDropdown, setCreateDropdown] = useState(false);
   const [toggle, setToggle] = useState(false);
   const [id, setId] = useState("");
+  const [editID, setEditID] = useState("");
 
   const { user, setUser } = useAuth();
 
@@ -46,7 +47,7 @@ export function Dashboard() {
 
   const showEditDropdown = (id: string) => {
     setDropdown(true);
-    setId(id);
+    setEditID(id);
   };
 
   const closeEditDropdown = () => {
@@ -94,7 +95,7 @@ export function Dashboard() {
               onRequestClose={closeCreateDropdown}
               style={customStyles}
             >
-              <CreateContact />
+              <CreateContact remove={closeCreateDropdown} />
             </Modal>
           </div>
           {contacts.map((contact) => (
@@ -126,7 +127,7 @@ export function Dashboard() {
             onRequestClose={closeEditDropdown}
             style={customStyles}
           >
-            <EditModal contactId={id} />
+            <EditModal contactId={editID} remove={closeEditDropdown} />
           </Modal>
           <Modal
             isOpen={removeDropdown}

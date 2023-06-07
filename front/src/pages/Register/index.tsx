@@ -5,6 +5,7 @@ import { useRegister } from "../../hooks/useRegister";
 import { Main } from "../../styles/main";
 import { Form } from "../../styles/forms";
 import { motion } from "framer-motion";
+import { Toaster } from "react-hot-toast";
 
 export function Register() {
   const { register, handleSubmit } = useForm<RegisterData>({
@@ -20,6 +21,7 @@ export function Register() {
       animate={{ x: 0, opacity: 1 }}
       exit={{ x: -200, opacity: 0 }}
     >
+      <Toaster />
       <Main>
         <h2>Cadastre-se</h2>
 
@@ -28,12 +30,7 @@ export function Register() {
           <input type="email" id="email" {...register("email")} />
 
           <label htmlFor="cellPhone">Celular</label>
-          <input
-            type="tell"
-            pattern="[0-9]{2}-[0-9]{5}-[0-9]{4}"
-            id="cellPhone"
-            {...register("cellPhone")}
-          />
+          <input type="tell" id="cellPhone" {...register("cellPhone")} />
 
           <label htmlFor="name">Nome Completo</label>
           <input type="text" id="name" {...register("name")} />

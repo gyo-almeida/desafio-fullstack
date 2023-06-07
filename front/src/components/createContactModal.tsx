@@ -6,15 +6,38 @@ import {
 } from "../validators/createContact";
 import { api } from "../services/api";
 import { Form } from "../styles/forms";
+import toast from "react-hot-toast";
 
-export function CreateContact() {
+interface CreateContact {
+  remove: () => void;
+}
+
+export function CreateContact({ remove }: CreateContact) {
   const { register, handleSubmit } = useForm<createContactData>({
     resolver: zodResolver(createContactSchema),
   });
 
   async function newContact(data: createContactData) {
     try {
-      await api.post(`/contacts/`, data);
+      const response = await api.post(`/contacts/`, data);
+
+      if (response.status === 200) {
+        toast.success(`Usuário editado com sucesso`, {
+          style: {
+            border: "1px solid #27AE60",
+            padding: "16px",
+            color: "#27AE60",
+            background: "#F5F5F5",
+          },
+          iconTheme: {
+            primary: "#27AE60",
+            secondary: "#F5F5F5",
+          },
+        });
+      }
+
+      remove();
+      location.reload();
     } catch (error) {
       console.error(error);
     }

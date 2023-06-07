@@ -1,11 +1,18 @@
 import { api } from "../services/api";
+import { Buttons } from "../styles/button";
 
-export function DeleteContact({ contactId, remove }) {
+export interface ContactModal {
+  contactId: string;
+  remove: () => void;
+}
+
+export function DeleteContact({ contactId, remove }: ContactModal) {
   async function deleteContact() {
     try {
       await api.delete(`/contacts/${contactId}`);
 
       remove();
+      location.reload();
     } catch (error) {
       console.error(error);
     }
@@ -14,14 +21,14 @@ export function DeleteContact({ contactId, remove }) {
   return (
     <div>
       <h2> Tem certeza que deseja deletar este contato?</h2>
-      <div className="buttons">
+      <Buttons className="buttons">
         <button type="button" onClick={deleteContact}>
           Deletar
         </button>
         <button type="button" onClick={remove}>
           Cancelar
         </button>
-      </div>
+      </Buttons>
     </div>
   );
 }

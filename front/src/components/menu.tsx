@@ -32,7 +32,7 @@ export function Menu() {
         onRequestClose={closeCreateDropdown}
         style={customStyles}
       >
-        <EditUserModal />
+        <EditUserModal remove={closeCreateDropdown} />
       </Modal>
       <li onClick={remove}>Sair</li>
     </Ul>

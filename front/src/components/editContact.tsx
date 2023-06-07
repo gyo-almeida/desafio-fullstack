@@ -3,16 +3,24 @@ import { useForm } from "react-hook-form";
 import { EditData, EditSchema } from "../validators/editContacts";
 import { api } from "../services/api";
 import { Form } from "../styles/forms";
+import { ContactModal } from "./deleteContact";
 
-export function EditModal({ contactId }) {
-  const { register, handleSubmit } = useForm<EditData>({
+export function EditModal({ contactId, remove }: ContactModal) {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<EditData>({
     resolver: zodResolver(EditSchema),
   });
+  console.log(errors);
 
   async function editInfos(data: EditData) {
     try {
-      const request = await api.patch(`/contacts/${contactId}`, data);
-      console.log(request);
+      await api.patch(`/contacts/${contactId}`, data);
+
+      remove();
+      location.reload();
     } catch (error) {
       console.error(error);
     }
@@ -25,7 +33,7 @@ export function EditModal({ contactId }) {
         <input type="text" placeholder="name" {...register("name")} />
         <input type="text" placeholder="email" {...register("email")} />
         <input type="text" placeholder="cellPhone" {...register("cellPhone")} />
-        <button type="submit">Salvar contato</button>
+        <button type="submit">Editar contato</button>
       </Form>
     </div>
   );

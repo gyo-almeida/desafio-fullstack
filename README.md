@@ -1,13 +1,3 @@
-Installation
-
-$ npm install
-$ yarn install
-
-Running the app
-
-$ npm run dev
-$ yarn dev
-
 <h1 style="align-items: center">SKY CONTACTS</h1>
 
 <div style="align-items: center">

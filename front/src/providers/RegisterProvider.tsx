@@ -26,6 +26,7 @@ export const RegisterProvider = ({ children }: RegisterProviderProps) => {
   const navigate = useNavigate();
 
   async function createCount(data: Register) {
+    console.log(data)
     try {
       const response = await api.post("/users", data);
 

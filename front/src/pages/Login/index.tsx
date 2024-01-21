@@ -21,6 +21,8 @@ export function Login() {
       exit={{ x: 200, opacity: 0 }}
     >
       <Main>
+        <h1>SKY CONTACTS</h1>
+
         <h2>Login</h2>
 
         <Form onSubmit={handleSubmit(signIn)}>

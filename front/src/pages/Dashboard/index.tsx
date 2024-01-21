@@ -79,6 +79,8 @@ export function Dashboard() {
       viewport={{ once: true }}
     >
       <Main>
+        <h1>SKY CONTACTS</h1>
+
         <div className="user-infos">
           <h2>{user?.name}</h2>
           <img src={menu} alt="" onClick={() => setToggle(!toggle)} />

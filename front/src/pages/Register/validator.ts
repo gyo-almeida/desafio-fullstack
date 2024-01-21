@@ -8,7 +8,7 @@ export const schema = z.object({
     .number()
     .or(
       z.string().max(11, "O número deve conter 11 caracteres, incluindo o DDD")
-    ),
+    )
 });
 
 export type RegisterData = z.infer<typeof schema>;

@@ -10,22 +10,30 @@ export const Ul = styled.ul`
   .contact-box {
     display: flex;
     justify-content: space-between;
+    margin-bottom: 15px;
   }
 
   .contact-box p {
     display: flex;
     color: var(--color-primery);
-    font-size: 21px;
+    font-size: 23px;
     font-weight: bolder;
     background-color: var(--white);
-    width: 23px;
-    height: 23px;
     align-items: center;
     justify-content: center;
-    border: solid 3px var(--color-primery);
-    border-radius: 12px;
     cursor: pointer;
   }
+  
+  .contact-box p:hover{
+    font-size: 30px;
+    
+  }
+
+  // .menu-dropdown {
+  //   display: flex;
+  //   flex-direction: column;
+  //   align-itens: center;
+  // }
 
   li {
     display: flex;

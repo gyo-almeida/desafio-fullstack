@@ -83,22 +83,26 @@ export function Dashboard() {
 
         <div className="user-infos">
           <h2>{user?.name}</h2>
+
           <img src={menu} alt="" onClick={() => setToggle(!toggle)} />
           {toggle && <Menu />}
         </div>
-        <p>{user?.email}</p>
-        <p>{user?.cellPhone}</p>
+        <div className="user-contact">
+          <p>{user?.email}</p>
+          <p>{user?.cellPhone}</p>
+        </div>
         <Ul>
           <div className="contact-box">
             <h3>Contatos</h3>
-            <p onClick={showCreateDropdown}>+</p>
-            <Modal
-              isOpen={createDropdown}
-              onRequestClose={closeCreateDropdown}
-              style={customStyles}
-            >
-              <CreateContact remove={closeCreateDropdown} />
-            </Modal>
+
+              <p onClick={showCreateDropdown}>+</p>
+              <Modal
+                isOpen={createDropdown}
+                onRequestClose={closeCreateDropdown}
+                style={customStyles}
+              >
+                <CreateContact remove={closeCreateDropdown} />
+              </Modal>
           </div>
           {contacts.map((contact) => (
             <>

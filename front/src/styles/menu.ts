@@ -3,7 +3,7 @@ import { styled } from "styled-components";
 export const Ul = styled.ul`
   position: relative;
   top: 25px;
-  right: 45px;
+  right: 12px;
   font-size: 12px;
   font-weight: 600;
 

@@ -17,7 +17,7 @@ interface AuthProviderProps {
 interface AuthContextValues {
   signIn: (data: LoginData) => void;
   user: User;
-  setUser: Dispatch<SetStateAction<User | string>>;
+  setUser: Dispatch<SetStateAction<User>>;
   loading: boolean;
 }
 

@@ -42,7 +42,6 @@ export const Main = styled.main`
 
   .user-infos {
     display: flex;
-    justify-content: space-between;
     align-items: flex-start;
     width: 330px;
   }
@@ -50,6 +49,12 @@ export const Main = styled.main`
   .user-infos img {
     position: relative;
     cursor: pointer;
+  }
+
+  .user-contact {
+    display:flex;
+    margin-top: 15px;
+    justify-content: space-between;
   }
 
   h4 {
